@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 //import java.util.Map;
 //import java.util.SortedSet;
 //import java.util.TreeSet;
@@ -23,17 +26,17 @@ public class NotesDataSource {
 
     public List<NoteItem> findAll(){
 
-    //    Map<String, ?> notesMap = notePrefs.getAll();
+        Map<String, ?> notesMap = notePrefs.getAll();
 
-    //    SortedSet<String> keys = new TreeSet<String>(notesMap.keySet());
+        SortedSet<String> keys = new TreeSet<String>(notesMap.keySet());
 
         List<NoteItem> noteList = new ArrayList<NoteItem>();
-    //    for (String key : keys) {
-            NoteItem note = NoteItem.getNew();
-    //        note.setKey(key);
-    //        note.setText((String) notesMap.get(key));
+        for (String key : keys) {
+            NoteItem note = new NoteItem();
+            note.setKey(key);
+            note.setText((String) notesMap.get(key));
             noteList.add(note);
-    //    }
+        }
 
         return noteList;
 
