@@ -45,4 +45,7 @@ public class NoteItem {
 
     }
 
+    public String toString() {
+        return this.getText();
+    }
 }
